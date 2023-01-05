@@ -4,7 +4,7 @@ import io
 import dash_bootstrap_components as dbc
 import dash
 from dash.dependencies import Input, Output, State
-from dash import dcc, html, dash_table
+from dash import dcc, html, dash_table, callback
 import geobr
 import plotly.express as px
 from statistics import mean
@@ -30,10 +30,10 @@ dfDownload = pd.DataFrame(data)
 muni = gpd.read_file('Municipios.geojson')
 
 """ Iniciando o APP com o Tema CERULEAN """
-app = dash.Dash(external_stylesheets=[dbc.themes.CERULEAN])
+dash.register_page(__name__, path='/',name='Gerador de Mapas')
 
 """ Layout da Aplicação """
-app.layout = html.Div([
+layout = html.Div([
     html.Div([
         html.Div([
             dbc.NavbarSimple(
@@ -47,7 +47,7 @@ app.layout = html.Div([
                     ),
                     dcc.Download(id="download-text")
                 ],
-                brand="Gerador de Mapas",
+                brand="🗺️ Gerador de Mapas",
                 brand_href="#",
                 color="primary",
                 dark=True,
@@ -80,7 +80,7 @@ app.layout = html.Div([
     children=["""O Primeiro envio, pode demorar um minuto para ser processardo. Sistema estará baixando os dados do site do IPEA"""]),
 ])
 
-@app.callback(
+@callback(
     Output("download-text", "data"),
     Input("btn-download-txt", "n_clicks"),
     prevent_initial_call=True,
@@ -110,7 +110,7 @@ def grafico(df):
     fig.update_layout(margin=dict(l=1, r=1, t=1, b=1))
     return fig
 
-@app.callback(Output('output-data-upload', 'children'),
+@callback(Output('output-data-upload', 'children'),
             Output('explicacao', 'children'),
             Output('explicacao2', 'children'),
             Input('upload-data', 'contents'),
