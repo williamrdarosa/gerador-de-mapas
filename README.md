@@ -6,6 +6,8 @@
 ## Links
 
 - [Apresentação](https://docs.google.com/presentation/d/e/2PACX-1vTE6J0dxqfGeXUXDA_-PYI3zLhshOSRjQrRRrJNQqOh11tNunozDqRVV6SCZSP01I9cG3aRYq4_HrBc/pub?start=false&loop=false&delayms=3000)
+- [Vídeo Youtube](https://www.youtube.com/watch?v=oWySLZjedvE)
+- [Post Site](https://williamrdarosa.com.br/apresentacao-dash-geopandas-gerador-de-mapas/)
 
 ## Motivações para o projeto
 
